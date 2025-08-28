@@ -1,0 +1,9 @@
+echo __pycache__>> .gitignore
+echo models>> .gitignore
+echo logs>> .gitignore
+echo .env>> .gitignore
+echo .vscode>> .gitignore
+echo .idea>> .gitignore
+echo .DS_Store>> .gitignore
+echo *.pyc>> .gitignore
+echo tests>> .gitignore
