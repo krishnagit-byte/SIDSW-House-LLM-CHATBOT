@@ -1,0 +1,39 @@
+version: "3.1"
+
+stories:
+- story: user registration 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: request_info_form
+  - action: user_info_form
+  - active_loop: user_info_form
+  - slot_was_set:
+    - requested_slot: user_name
+  - intent: inform
+  - action: user_info_form
+  - slot_was_set:
+    - requested_slot: user_city
+  - intent: inform
+  - action: user_info_form
+  - slot_was_set:
+    - requested_slot: phone_number
+  - intent: inform
+  - action: user_info_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_save_user_info
+  - action: utter_submit
+
+- story: user registration from greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: user_info_form
+  - active_loop: user_info_form
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye

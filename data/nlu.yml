@@ -1,0 +1,91 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: request_info_form
+  examples: |
+    - I want to register
+    - I need to provide my information
+    - collect my details
+    - registration
+    - sign me up
+    - I want to give my info
+    - register me
+    - take my details
+    - yes
+
+- intent: inform
+  examples: |
+    - my name is [sai](name)
+    - I'm [Sarah](name)
+    - call me [ram](name)
+    - I live in [goa](city)
+    - I'm from [London](city)
+    - my city is [dubai](city)
+    - my phone is [1234567890](phone)
+    - call me at [75550123](phone)
+    - my number is [9876543210](phone)
+    - [krishna](name)
+    - [dubai](city)
+    - [51234567](phone)
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yes please
+    - sure
+    - absolutely
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: ask_anything
+  examples: |
+    - What is the capital of France?
+    - Tell me about the Eiffel Tower
+    - How does quantum computing work?
+    - Who is Elon Musk?
+    - Can you explain photosynthesis?
+    - tell me about SID Technology- IT Solutions and Software Services . which is located in dubai
+    - what services does SID Technology offer?
+    - how can I contact SID Technology?
