@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rasa Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    #chat-container {
+      width: 400px; margin: 50px auto; background: white; border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 15px;
+    }
+    #messages {
+      height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 10px;
+      border-radius: 5px; margin-bottom: 10px;
+    }
+    .user { text-align: right; color: blue; margin: 5px 0; }
+    .bot { text-align: left; color: green; margin: 5px 0; }
+    #input-area { display: flex; }
+    #input-area input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    #input-area button { padding: 10px; margin-left: 5px; border: none; background: #4CAF50; color: white; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <h3>SID ChatBOT</h3>
+    <div id="messages"></div>
+    <div id="input-area">
+      <input type="text" id="userInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const rasaURL = "http://localhost:5005/webhooks/rest/webhook";
+
+    async function sendMessage() {
+      let inputField = document.getElementById("userInput");
+      let message = inputField.value;
+      if (!message) return;
+
+      // Show user message
+      appendMessage("user", message);
+      inputField.value = "";
+
+      // Send to Rasa
+      const response = await fetch(rasaURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sender: "user", message: message })
+      });
+
+      const data = await response.json();
+      data.forEach(msg => {
+        if (msg.text) appendMessage("bot", msg.text);
+      });
+    }
+
+    function appendMessage(sender, text) {
+      let messagesDiv = document.getElementById("messages");
+      let messageElement = document.createElement("div");
+      messageElement.className = sender;
+      messageElement.innerText = text;
+      messagesDiv.appendChild(messageElement);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+  </script>
+</body>
+</html>
