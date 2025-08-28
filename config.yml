@@ -1,0 +1,38 @@
+# Configuration for Rasa NLU and Core.
+
+
+
+recipe: default.v1
+language: en
+
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 100
+  constrain_similarities: true
+- name: FallbackClassifier
+  threshold: 0.3
+  ambiguity_threshold: 0.1
+
+policies:                           # Policies for managing conversation flow
+- name: MemoizationPolicy     # This policy remembers user messages and their responses
+- name: RulePolicy             # This policy handles rules defined in the domain
+- name: UnexpecTEDIntentPolicy   # This policy handles unexpected intents
+  max_history: 5
+  epochs: 100
+- name: TEDPolicy        # This policy handles multi-turn conversations
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true
+assistant_id: 20250819-131451-unproductive-poplin  # This is the assistant's unique identifier
