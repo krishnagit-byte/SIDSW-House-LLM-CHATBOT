@@ -74,6 +74,10 @@ endpoints.yml: Specifies the action server endpoint (http://localhost:5055/webho
 
 
 
+HOW  ITS  WORKS
+
+
+
 User (sends message)  
    │
    ▼
@@ -85,8 +89,10 @@ User (sends message)
 3. DIETClassifier → predicts intent + entities
 4. ResponseSelector (if FAQ) → retrieves canned response
 5. FallbackClassifier → checks if confidence too low
-   │
-   ▼
+
+
+   │ 
+          ▼
 ──────────────────────────────
      Rasa Core Policies
 ──────────────────────────────
@@ -94,6 +100,9 @@ User (sends message)
 7. RulePolicy → checks fixed rules (like fallback rules)
 8. TEDPolicy → predicts next best action
 9. UnexpecTEDIntentPolicy → handles unexpected input
+
+
+
    │
    ▼
 ──────────────────────────────
@@ -101,6 +110,10 @@ User (sends message)
 ──────────────────────────────
 10. If normal intent → reply from domain.yml responses
 11. If custom intent → run custom action (actions.py)
+
+
+
+
        │
        ▼
 ──────────────────────────────
@@ -112,6 +125,9 @@ User (sends message)
        - Groq model generates text (LLM response)
 13. Parse Groq JSON response
 14. Return AI-generated reply back to Rasa
+
+
+
    │
    ▼
 ──────────────────────────────
