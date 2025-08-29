@@ -82,7 +82,7 @@ class ActionSaveUserInfo(Action):
         
         return []
 
-GROQ_API_KEY = "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"
+GROQ_API_KEY = "groq api key"  # Replace with your actual Groq API key
 
 class ActionGroq(Action):
     """
@@ -90,7 +90,7 @@ class ActionGroq(Action):
     """
 
 
-    GROQ_API_KEY = "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"
+    GROQ_API_KEY = "geoq api key"   
 
     def name(self) -> str:
         return "action_groq"
