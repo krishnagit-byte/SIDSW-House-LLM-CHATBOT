@@ -81,7 +81,7 @@ HOW  ITS  WORKS
 User (sends message)  
    │
    ▼
-──────────────────────────────
+─────
      Rasa NLU Pipeline
 
 1. WhitespaceTokenizer → splits text
@@ -93,7 +93,7 @@ User (sends message)
 
    │ 
           ▼
-──────────────────────────────
+─────
      Rasa Core Policies
   
 6. MemoizationPolicy → checks if story memorized
@@ -105,7 +105,7 @@ User (sends message)
 
    │
    ▼
-──────────────────────────────
+─────
      Action Chosen
   
 10. If normal intent → reply from domain.yml responses
@@ -116,7 +116,7 @@ User (sends message)
 
        │
        ▼
-──────────────────────────────
+─────
      Groq API (in actions.py)
 
 12. Your code:
@@ -130,7 +130,7 @@ User (sends message)
 
    │
    ▼
-──────────────────────────────
+─────
      Bot Reply to User
 
 15. Dispatcher sends final message back to user
