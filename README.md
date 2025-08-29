@@ -83,7 +83,7 @@ User (sends message)
    ▼
 ──────────────────────────────
      Rasa NLU Pipeline
-──────────────────────────────
+
 1. WhitespaceTokenizer → splits text
 2. Featurizers (Regex, Lexical, CountVectors) → turn text into numbers
 3. DIETClassifier → predicts intent + entities
@@ -95,7 +95,7 @@ User (sends message)
           ▼
 ──────────────────────────────
      Rasa Core Policies
-──────────────────────────────
+  
 6. MemoizationPolicy → checks if story memorized
 7. RulePolicy → checks fixed rules (like fallback rules)
 8. TEDPolicy → predicts next best action
@@ -107,7 +107,7 @@ User (sends message)
    ▼
 ──────────────────────────────
      Action Chosen
-──────────────────────────────
+  
 10. If normal intent → reply from domain.yml responses
 11. If custom intent → run custom action (actions.py)
 
@@ -118,7 +118,7 @@ User (sends message)
        ▼
 ──────────────────────────────
      Groq API (in actions.py)
-──────────────────────────────
+
 12. Your code:
        - Prepares url, headers, payload
        - Sends request → requests.post()
@@ -132,5 +132,5 @@ User (sends message)
    ▼
 ──────────────────────────────
      Bot Reply to User
-──────────────────────────────
+
 15. Dispatcher sends final message back to user
