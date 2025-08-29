@@ -118,10 +118,13 @@ class ActionGroq(Action):
             "messages": [{"role": "user", "content": user_message}],
             "max_tokens": 500,
             "temperature": 0.7,
+            #"top_p": 1.0,
+            #"frequency_penalty": 0.1,
+            #"presence_penalty": 0.1
         }
 
         try:
-            response = requests.post(url, headers=headers, json=payload)
+            response = requests.post(url, headers=headers, json=payload)  # Timeot = 30
             response.raise_for_status()
             data = response.json()
             assistant_reply = data["choices"][0]["message"]["content"].strip()
